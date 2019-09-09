@@ -1,6 +1,12 @@
 # Hyperledger-meetup demo (18-09-2019)
 
-## Demo 1 (Tested on 18.04)
+*Tested on 18.04 Ubuntu*
+
+### Table of contents
+* [Demo 1](#demo-1)
+* [Demo 2](#demo-2)
+
+## Demo-1
 
 ### Setup - General
 1. Install docker-ce community edition > 17.06. [Fabric pre-reqs](https://hyperledger-fabric.readthedocs.io/en/latest/prereqs.html),
@@ -89,3 +95,42 @@ echo 'y' |./byfn.sh down
 cd ~/hyperledger/blockchain-explorer
 docker-compose down
 ```
+
+## Demo-2
+
+### Create a successful/unsuccessful transaction
+0. Set some environment variable
+```
+export ORDERER_CA=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+```
+1. Query the value of 'a' and 'b'
+```
+peer chaincode query -C mychannel -n mycc -c '{
+"Args":["query","a"]}'
+peer chaincode query -C mychannel -n mycc -c '{
+"Args":["query","b"]}'
+```
+2. Create a transaction with both the org1 and org2 peers
+```
+peer chaincode invoke -o orderer.example.com:7050 --tls true --cafile $ORDERER_CA -C mychannel -n mycc \
+--peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt \
+--peerAddresses peer0.org2.example.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt \
+-c '{"Args":["invoke","a","b","10"]}'
+```
+
+3. Repeat step 1 to query the value of 'a' and 'b'
+
+**Did you notice the change in values?**
+
+4. Create a transaction with ONLY the org1 peer
+```
+peer chaincode invoke -o orderer.example.com:7050 -C mychannel -n mycc -c '{"Args":["invoke","a","b","10"]}' --tls --cafile $ORDERER_CA
+```
+
+5. Repeat step 1 to query the value of 'a' and 'b'
+
+**Was there a change in values?**
+
+6. Open the explorer to witness what had happened.
+
+Go to the `transactions` tab in the top
