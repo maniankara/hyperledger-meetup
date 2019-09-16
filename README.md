@@ -19,7 +19,7 @@ sudo add-apt-repository \
    $(lsb_release -cs) \
    stable"
 sudo apt install -y docker-ce docker-ce-cli containerd.io
-sudo usermod -a -G docker ubuntu
+sudo usermod -a -G docker $USER
 ```
 
 2. Install `docker-compose`
@@ -32,7 +32,7 @@ sudo chmod a+x /usr/local/bin/docker-compose
 ```
 sudo add-apt-repository ppa:longsleep/golang-backports
 sudo apt update
-sudo apt install golang-go
+sudo apt install golang-go -y
 ```
 
 4. Verify the installations
