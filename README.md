@@ -14,6 +14,7 @@
 ```
 sudo apt install -y docker.io
 sudo usermod -a -G docker $USER
+newgrp docker
 ```
 
 2. Install `docker-compose`
