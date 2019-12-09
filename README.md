@@ -50,7 +50,7 @@ curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.3 1.4.3 0.4.15
 cat >> ~/.bashrc << EOF
 export PATH=$PATH:~/hyperledger/fabric-samples/bin
 EOF
-. ~/.bashrc
+source ~/.bashrc
 ```
 
 3. Launch fabric cluster
