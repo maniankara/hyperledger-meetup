@@ -42,7 +42,7 @@ go version
 ```
 mkdir -p ~/hyperledger
 cd ~/hyperledger
-curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.3 1.4.3 0.4.15
+curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.4 1.4.4 0.4.18
 ```
 
 2. Setup path
