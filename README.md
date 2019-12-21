@@ -25,7 +25,7 @@ sudo chmod a+x /usr/local/bin/docker-compose
 
 3. Install golang
 ```
-sudo add-apt-repository ppa:longsleep/golang-backports
+sudo add-apt-repository ppa:longsleep/golang-backports -y
 sudo apt update
 sudo apt install golang-go -y
 ```
@@ -38,7 +38,7 @@ go version
 ```
 
 ### Setup - Hyperledger fabric
-1. Install fabric 1.4.3
+1. Install fabric 1.4.4
 ```
 mkdir -p ~/hyperledger
 cd ~/hyperledger
