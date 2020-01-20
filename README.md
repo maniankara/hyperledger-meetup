@@ -1,6 +1,7 @@
 # Hyperledger-meetup demo (18-09-2019)
 
 *Tested on 18.04 Ubuntu*
+Presentation material: https://speakerdeck.com/maniankara/hyperledger-fabric-technical-introduction-meetup-helsinki
 
 ### Table of contents
 * [Demo 1](#demo-1)
